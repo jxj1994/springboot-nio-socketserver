@@ -1,0 +1,35 @@
+server:
+  port: 8848
+  tomcat:
+    max-keep-alive-requests: 200
+    threads:
+      max: 256
+  servlet:
+    context-path: /socket-server
+spring:
+  profiles:
+    active: dev
+
+  datasource:
+    driver-class-name: oracle.jdbc.OracleDriver
+    hikari:
+      isAutoCommit: true
+      maxPoolSize: 30
+      #最大连接空闲时间：30分钟
+      maxLifetime: 600000
+      #connection-test-query: "select * from dual"
+      validationTimeout: 3000
+      connectionTimeout: 6000
+      #login-timeout: 300
+      minIdle: 5
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+
+jiang:
+  socket:
+    server:
+      port: 10086
+      bindAdds: 127.0.0.1
+      timeOuts: 60
